@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import com.proyecto.app.spring.entity.Proveedor;
 import com.proyecto.app.spring.service.ProveedorService;
-@CrossOrigin(origins = "*") /*cualquier url puede acceder a la api rest*/
+@CrossOrigin(origins = "*") 
 @RestController
 @RequestMapping("/api/proveedor")
 public class ProveedorController {
@@ -26,11 +26,19 @@ public class ProveedorController {
 		List<Proveedor> proveedores=proveedorService.findAll();
 		return proveedores;
 	}
-	@GetMapping("/{nombreP}")
+	@GetMapping("/{id}") 
+	public ResponseEntity<?> read(@PathVariable Long id){
+		Optional<Proveedor> oproveedor=proveedorService.findById(id);
+		if(!oproveedor.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok(oproveedor);
+	}
+	/*@GetMapping("/{nombreP}")
 	public ResponseEntity<?> read(@PathVariable String nombreP) {
 		List<Proveedor> proveedores=proveedorService.findByNombrePContaining(nombreP);
 		return ResponseEntity.ok(proveedores);
-	}
+	}*/
 	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@RequestBody Proveedor proveedorDetails,@PathVariable Long id){
 		Optional<Proveedor> oproveedor=proveedorService.findById(id);
@@ -44,7 +52,7 @@ public class ProveedorController {
 		oproveedor.get().setCorreo(proveedorDetails.getCorreo());
 	    return ResponseEntity.status(HttpStatus.CREATED).body(proveedorService.save(oproveedor.get()));
 	}
-	@DeleteMapping("{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		if(!proveedorService.findById(id).isPresent()) {
 			return ResponseEntity.notFound().build();
