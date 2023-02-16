@@ -12,13 +12,13 @@ public class Proveedor {
 	@Column(name="nombre_p", nullable=false,length=100)
 	private String nombreP;
 	
-	@Column(name="ruc",nullable=false,length=11)
+	@Column(name="ruc",nullable=false,length=11,unique=true)
 	private String ruc;
 	
 	@Column(name="direccion",nullable=false,length=50)
 	private String direccion;
 	
-	@Column(name="telefono",nullable=false,length=9)
+	@Column(name="telefono",nullable=false,length=20,unique=true)
 	private String telefono;
 	
 	@Column(name="correo",nullable=false,length=50)
