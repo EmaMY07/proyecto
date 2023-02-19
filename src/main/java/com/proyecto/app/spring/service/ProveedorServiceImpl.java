@@ -32,8 +32,8 @@ public class ProveedorServiceImpl implements ProveedorService{
 
 	@Override
 	@Transactional
-	public Proveedor save(Proveedor proveedor) {
-		return proveedorDAO.save(proveedor);
+	public void save(Proveedor proveedor) {
+		 proveedorDAO.save(proveedor);
 	}
 
 	@Override

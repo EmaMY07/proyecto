@@ -12,7 +12,7 @@ public interface ProveedorService {
 	
 	public Optional<Proveedor> findById(Long idProveedor);
 	
-	public Proveedor save(Proveedor proveedor);
+	public void save(Proveedor proveedor);
 	
 	public void deleteById(Long id);
 }

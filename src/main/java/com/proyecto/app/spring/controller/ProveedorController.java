@@ -3,7 +3,6 @@ package com.proyecto.app.spring.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,21 +17,22 @@ public class ProveedorController {
 	
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Proveedor proveedor){
-		return ResponseEntity.status(HttpStatus.CREATED).body(proveedorService.save(proveedor));
+		proveedorService.save(proveedor);
+		return ResponseEntity.ok().build();
 	}
 	
 	@GetMapping
-	public List<Proveedor> readAll(){
+	public ResponseEntity<List<Proveedor>> readAll(){
 		List<Proveedor> proveedores=proveedorService.findAll();
-		return proveedores;
+		return ResponseEntity.ok().body(proveedores);
 	}
 	@GetMapping("/{id}") 
-	public ResponseEntity<?> read(@PathVariable Long id){
+	public ResponseEntity<Proveedor> read(@PathVariable Long id){
 		Optional<Proveedor> oproveedor=proveedorService.findById(id);
 		if(!oproveedor.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(oproveedor);
+		return ResponseEntity.ok(oproveedor.get());
 	}
 	/*@GetMapping("/{nombreP}")
 	public ResponseEntity<?> read(@PathVariable String nombreP) {
@@ -45,12 +45,9 @@ public class ProveedorController {
 		if(!oproveedor.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		oproveedor.get().setNombreP(proveedorDetails.getNombreP());
-		oproveedor.get().setRuc(proveedorDetails.getRuc());
-		oproveedor.get().setDireccion(proveedorDetails.getDireccion());
-		oproveedor.get().setTelefono(proveedorDetails.getTelefono());
-		oproveedor.get().setCorreo(proveedorDetails.getCorreo());
-	    return ResponseEntity.status(HttpStatus.CREATED).body(proveedorService.save(oproveedor.get()));
+		proveedorDetails.setId(oproveedor.get().getId());
+		proveedorService.save(proveedorDetails);
+	    return ResponseEntity.ok().build();
 	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
