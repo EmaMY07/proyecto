@@ -16,7 +16,7 @@ public class Trabajador {
 	private Long id;
 	
 	@OneToOne
-    @JoinColumn(name = "ID_Usuario")
+    @JoinColumn(name = "ID_Usuario",nullable=false)
     private Usuario usuario;
 	
 	@Column(name="Nombre_Trabajador",nullable=false,length=20)
