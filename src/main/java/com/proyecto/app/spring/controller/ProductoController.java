@@ -16,7 +16,7 @@ public class ProductoController {
 	private ProductoService productoService;
 	
 	@GetMapping
-	public ResponseEntity <List<ProductoDTO>> readAll(){
+	public ResponseEntity <?> readAll(){
 		List<Producto> productos=productoService.findAll();
 		List<ProductoDTO> productosDTO=new ArrayList<>();
 		for(Producto producto: productos) {
@@ -25,7 +25,10 @@ public class ProductoController {
 					,producto.getTrabajador().getNombre());
 			productosDTO.add(productoDTO);
 		}
-		return ResponseEntity.ok().body(productosDTO);
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+        respuesta.put("data", productosDTO);
+        return ResponseEntity.ok().body(respuesta);
 		
 	}
 	
@@ -39,13 +42,18 @@ public class ProductoController {
 				productoOptional.get().getUnidadMedida(),productoOptional.get().getCantidadProducto(),
 				productoOptional.get().getClaseProducto(),productoOptional.get().getProveedor().getNombreP(),
 				productoOptional.get().getTrabajador().getNombre());
-		return ResponseEntity.ok().body(productoDTO);
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+        respuesta.put("data", productoDTO);
+		return ResponseEntity.ok().body(respuesta);
 	}
 	
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Producto producto){
 		productoService.save(producto);
-		return ResponseEntity.ok().build();
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+		return ResponseEntity.ok().body(respuesta);
 	}
 	
 	@PutMapping("/{id}")
@@ -56,7 +64,9 @@ public class ProductoController {
 		}
 		producto.setId(id);
 		productoService.save(producto);
-		return ResponseEntity.ok().build();
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+		return ResponseEntity.ok().body(respuesta);
 		
 	}
 	@DeleteMapping("/{id}")
@@ -66,7 +76,9 @@ public class ProductoController {
 			return ResponseEntity.notFound().build();
 		}
 		productoService.deleteById(id);
-		return ResponseEntity.ok().build();
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+		return ResponseEntity.ok().body(respuesta);
 		
 	}
 }

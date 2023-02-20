@@ -18,21 +18,29 @@ public class ProveedorController {
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody Proveedor proveedor){
 		proveedorService.save(proveedor);
-		return ResponseEntity.ok().build();
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+		return ResponseEntity.ok().body(respuesta);
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<Proveedor>> readAll(){
+	public ResponseEntity<?> readAll(){
 		List<Proveedor> proveedores=proveedorService.findAll();
-		return ResponseEntity.ok().body(proveedores);
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+        respuesta.put("data", proveedores);
+		return ResponseEntity.ok().body(respuesta);
 	}
 	@GetMapping("/{id}") 
-	public ResponseEntity<Proveedor> read(@PathVariable Long id){
+	public ResponseEntity<?> read(@PathVariable Long id){
 		Optional<Proveedor> oproveedor=proveedorService.findById(id);
 		if(!oproveedor.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		return ResponseEntity.ok(oproveedor.get());
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+        respuesta.put("data", oproveedor.get());
+		return ResponseEntity.ok().body(respuesta);
 	}
 	/*@GetMapping("/{nombreP}")
 	public ResponseEntity<?> read(@PathVariable String nombreP) {
@@ -47,7 +55,9 @@ public class ProveedorController {
 		}
 		proveedorDetails.setId(oproveedor.get().getId());
 		proveedorService.save(proveedorDetails);
-	    return ResponseEntity.ok().build();
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+		return ResponseEntity.ok().body(respuesta);
 	}
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
@@ -55,6 +65,8 @@ public class ProveedorController {
 			return ResponseEntity.notFound().build();
 		}
 	    proveedorService.deleteById(id);
-	    return ResponseEntity.ok().build();
+	    Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+		return ResponseEntity.ok().body(respuesta);
 	}
 }
