@@ -28,8 +28,8 @@ public class Trabajador {
 	@Column(name="Edad_Trabajador",nullable=false, columnDefinition = "SMALLINT(2)")
 	private short edad;
 	
-	@Column(name="DNI_Trabajador",nullable=false, columnDefinition = "SMALLINT(8)")
-	private short dni;
+	@Column(name="DNI_Trabajador",nullable=false,length=8)
+	private int dni;
 	
 	@Column(name="Telefono_Trabajador",nullable=false,length=20)
 	private String telefono;
@@ -53,7 +53,7 @@ public class Trabajador {
 		super();
 	}
 
-	public Trabajador(Long id, Usuario usuario, String nombre, String apellido, short edad, short dni, String telefono,
+	public Trabajador(Long id, Usuario usuario, String nombre, String apellido, short edad, int dni, String telefono,
 			String correo, Date fechaAlta, Date fechaBaja, String direccion, Set<Producto> productos) {
 		super();
 		this.id = id;
@@ -110,11 +110,11 @@ public class Trabajador {
 		this.edad = edad;
 	}
 
-	public short getDni() {
+	public int getDni() {
 		return dni;
 	}
 
-	public void setDni(short dni) {
+	public void setDni(int dni) {
 		this.dni = dni;
 	}
 
