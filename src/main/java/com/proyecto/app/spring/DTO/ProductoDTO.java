@@ -5,8 +5,8 @@ import java.math.BigDecimal;
 public class ProductoDTO {
 	private Long id;
 	private String nombre;
-	private BigDecimal unidadMedida;
-	private int cantidadProducto;
+	private String unidadMedida;
+	private BigDecimal cantidadProducto;
 	private String claseProducto;
 	private String nombreProveedor;
 	private String nombreTrabajador;
@@ -15,7 +15,7 @@ public class ProductoDTO {
 		super();
 	}
 
-	public ProductoDTO(Long id, String nombre, BigDecimal unidadMedida, int cantidadProducto, String claseProducto,
+	public ProductoDTO(Long id, String nombre, String unidadMedida, BigDecimal cantidadProducto, String claseProducto,
 			String nombreProveedor, String nombreTrabajador) {
 		super();
 		this.id = id;
@@ -43,19 +43,19 @@ public class ProductoDTO {
 		this.nombre = nombre;
 	}
 
-	public BigDecimal getUnidadMedida() {
+	public String getUnidadMedida() {
 		return unidadMedida;
 	}
 
-	public void setUnidadMedida(BigDecimal unidadMedida) {
+	public void setUnidadMedida(String unidadMedida) {
 		this.unidadMedida = unidadMedida;
 	}
 
-	public int getCantidadProducto() {
+	public BigDecimal getCantidadProducto() {
 		return cantidadProducto;
 	}
 
-	public void setCantidadProducto(int cantidadProducto) {
+	public void setCantidadProducto(BigDecimal cantidadProducto) {
 		this.cantidadProducto = cantidadProducto;
 	}
 

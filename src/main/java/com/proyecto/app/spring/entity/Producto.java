@@ -19,11 +19,11 @@ public class Producto {
 	@Column(name = "Nombre_Producto", nullable = false, length = 20)
 	private String nombre;
 
-	@Column(name = "U_medida", nullable = false, columnDefinition = "DECIMAL(5,2)")
-	private BigDecimal unidadMedida;
+	@Column(name = "U_medida", nullable = false,length=5)
+	private String unidadMedida;
 
-	@Column(name = "Cantidad_Producto", nullable = false, length = 3)
-	private int cantidadProducto;
+	@Column(name = "Cantidad_Producto", nullable = false, columnDefinition = "DECIMAL(6,2)")
+	private BigDecimal cantidadProducto;
 
 	@Column(name = "Clase_Producto", nullable = false, length = 15)
 	private String claseProducto;
@@ -49,8 +49,8 @@ public class Producto {
 
 	
 
-	public Producto(Long id, Proveedor proveedor, Trabajador trabajador, String nombre, BigDecimal unidadMedida,
-			int cantidadProducto, String claseProducto) {
+	public Producto(Long id, Proveedor proveedor, Trabajador trabajador, String nombre, String unidadMedida,
+			BigDecimal cantidadProducto, String claseProducto) {
 		super();
 		this.id = id;
 		this.proveedor = proveedor;
@@ -101,19 +101,19 @@ public class Producto {
 		this.nombre = nombre;
 	}
 
-	public BigDecimal getUnidadMedida() {
+	public String getUnidadMedida() {
 		return unidadMedida;
 	}
 
-	public void setUnidadMedida(BigDecimal unidadMedida) {
+	public void setUnidadMedida(String unidadMedida) {
 		this.unidadMedida = unidadMedida;
 	}
 
-	public int getCantidadProducto() {
+	public BigDecimal getCantidadProducto() {
 		return cantidadProducto;
 	}
 
-	public void setCantidadProducto(int cantidadProducto) {
+	public void setCantidadProducto(BigDecimal cantidadProducto) {
 		this.cantidadProducto = cantidadProducto;
 	}
 
