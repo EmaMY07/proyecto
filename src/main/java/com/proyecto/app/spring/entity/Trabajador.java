@@ -32,7 +32,7 @@ public class Trabajador {
 	private short dni;
 	
 	@Column(name="Telefono_Trabajador",nullable=false,length=20)
-	private int telefono;
+	private String telefono;
 	
 	@Column(name="Correo_Trabajador",nullable=false,length=20)
 	private String correo;
@@ -53,7 +53,7 @@ public class Trabajador {
 		super();
 	}
 
-	public Trabajador(Long id, Usuario usuario, String nombre, String apellido, short edad, short dni, int telefono,
+	public Trabajador(Long id, Usuario usuario, String nombre, String apellido, short edad, short dni, String telefono,
 			String correo, Date fechaAlta, Date fechaBaja, String direccion, Set<Producto> productos) {
 		super();
 		this.id = id;
@@ -118,11 +118,11 @@ public class Trabajador {
 		this.dni = dni;
 	}
 
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
 
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 
