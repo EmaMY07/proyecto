@@ -18,7 +18,7 @@ public class Usuario {
 	@JsonProperty(access = Access.WRITE_ONLY)
 	private Roles rol;
 	
-	@Column(name="Usuario",nullable=false,length=15)
+	@Column(name="Usuario",nullable=false,length=15,unique=true)
 	private String usuario;
 	
 	@Column(name="Contraseña",nullable=false,length=50)

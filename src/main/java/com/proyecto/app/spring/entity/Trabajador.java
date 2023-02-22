@@ -4,7 +4,6 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-
 import jakarta.persistence.*;
 
 @Entity
@@ -16,7 +15,7 @@ public class Trabajador {
 	private Long id;
 	
 	@OneToOne
-    @JoinColumn(name = "ID_Usuario",nullable=false)
+    @JoinColumn(name = "ID_Usuario",nullable=false,unique=true)
     private Usuario usuario;
 	
 	@Column(name="Nombre_Trabajador",nullable=false,length=20)
@@ -28,13 +27,13 @@ public class Trabajador {
 	@Column(name="Edad_Trabajador",nullable=false, columnDefinition = "SMALLINT(2)")
 	private short edad;
 	
-	@Column(name="DNI_Trabajador",nullable=false,length=8)
+	@Column(name="DNI_Trabajador",nullable=false,length=8,unique=true)
 	private int dni;
 	
 	@Column(name="Telefono_Trabajador",nullable=false,length=20)
 	private String telefono;
 	
-	@Column(name="Correo_Trabajador",nullable=false,length=20)
+	@Column(name="Correo_Trabajador",nullable=false,length=50)
 	private String correo;
 	
 	@Column(name="Fecha_Alta",nullable=false)

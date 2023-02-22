@@ -22,7 +22,7 @@ public class Proveedor {
 	@Column(name = "Direccion_Proveedor", nullable = false, length = 50)
 	private String direccion;
 
-	@Column(name = "telefono", nullable = false, length = 20, unique = true)
+	@Column(name = "telefono", nullable = false, length = 20)
 	private String telefono;
 
 	@Column(name = "correo", nullable = false, length = 50)

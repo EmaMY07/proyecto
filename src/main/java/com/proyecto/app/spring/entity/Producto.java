@@ -5,7 +5,6 @@ import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -19,13 +18,13 @@ public class Producto {
 	@Column(name = "Nombre_Producto", nullable = false, length = 20)
 	private String nombre;
 
-	@Column(name = "U_medida", nullable = false,length=5)
+	@Column(name = "U_medida", nullable = false,length=20)
 	private String unidadMedida;
 
-	@Column(name = "Cantidad_Producto", nullable = false, columnDefinition = "DECIMAL(6,2)")
+	@Column(name = "Cantidad_Producto", nullable = false, columnDefinition = "DECIMAL(5,3)")
 	private BigDecimal cantidadProducto;
 
-	@Column(name = "Clase_Producto", nullable = false, length = 15)
+	@Column(name = "Clase_Producto", nullable = false, length = 20)
 	private String claseProducto;
 	
 	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL)
