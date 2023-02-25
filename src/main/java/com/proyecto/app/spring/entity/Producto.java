@@ -21,7 +21,7 @@ public class Producto {
 	@Column(name = "U_medida", nullable = false,length=20)
 	private String unidadMedida;
 
-	@Column(name = "Cantidad_Producto", nullable = false, columnDefinition = "DECIMAL(5,3)")
+	@Column(name = "Cantidad_Producto", nullable = false, columnDefinition = "DECIMAL(8,3)")
 	private BigDecimal cantidadProducto;
 
 	@Column(name = "Clase_Producto", nullable = false, length = 20)
