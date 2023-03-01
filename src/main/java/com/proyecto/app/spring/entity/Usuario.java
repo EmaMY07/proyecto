@@ -21,7 +21,7 @@ public class Usuario {
 	@Column(name="Usuario",nullable=false,length=15,unique=true)
 	private String usuario;
 	
-	@Column(name="Contraseña",nullable=false,length=50)
+	@Column(name="Contraseña",nullable=false,length=100)
 	private String contrasena;
 
 	public Usuario() {

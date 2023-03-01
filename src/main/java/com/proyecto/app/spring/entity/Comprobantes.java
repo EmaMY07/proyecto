@@ -3,10 +3,13 @@ package com.proyecto.app.spring.entity;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import jakarta.persistence.*;
+
+
 
 @Entity
 @Table(name="registro_comprobantes")
