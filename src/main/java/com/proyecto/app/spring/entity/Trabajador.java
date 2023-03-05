@@ -21,7 +21,7 @@ public class Trabajador {
 	@Column(name="Nombre_Trabajador",nullable=false,length=20)
 	private String nombre;
 	
-	@Column(name="Apellido_Trabajador",nullable=false,length=20)
+	@Column(name="Apellidos_Trabajador",nullable=false,length=60)
 	private String apellido;
 	
 	@Column(name="Edad_Trabajador",nullable=false, columnDefinition = "SMALLINT(2)")
@@ -39,7 +39,7 @@ public class Trabajador {
 	@Column(name="Fecha_Alta",nullable=false)
 	private Date fechaAlta;
 	
-	@Column(name="Fecha_Baja",nullable=false)
+	@Column(name="Fecha_Baja")
 	private Date fechaBaja;
 	
 	@Column(name="Direccion",nullable=false,length=200)
