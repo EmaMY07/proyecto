@@ -20,8 +20,8 @@ public class UsuarioController {
 		List<Usuario> usuarios=usuarioService.findAll();
 		List<UsuarioDTO>usuariosDTO=new ArrayList<>();
 		for(Usuario usuario:usuarios) {
-			UsuarioDTO usuarioDTO=new UsuarioDTO(usuario.getId(),usuario.getRol().getNombreRol()
-					,usuario.getUsuario(),usuario.getContrasena());
+			UsuarioDTO usuarioDTO=new UsuarioDTO(usuario.getId(),usuario.getRol().getId(),
+					usuario.getRol().getNombreRol(),usuario.getUsuario(),usuario.getContrasena());
 			usuariosDTO.add(usuarioDTO);
 		}
 		Map<String, Object> respuesta = new HashMap<>();
@@ -36,7 +36,8 @@ public class UsuarioController {
 		if(!usuarioOptional.isPresent()) {
 			return ResponseEntity.notFound().build();
 		}
-		UsuarioDTO usuarioDTO=new UsuarioDTO(usuarioOptional.get().getId(),usuarioOptional.get().getRol().getNombreRol(),
+		UsuarioDTO usuarioDTO=new UsuarioDTO(usuarioOptional.get().getId(),usuarioOptional.get().getRol().getId(),
+				usuarioOptional.get().getRol().getNombreRol(),
 				usuarioOptional.get().getUsuario(),usuarioOptional.get().getContrasena());
 		Map<String, Object> respuesta = new HashMap<>();
         respuesta.put("status", 200);
@@ -55,8 +56,10 @@ public class UsuarioController {
 	public ResponseEntity<?> validation(@RequestBody UsuarioDTO usuarioDTO){
 		if(usuarioService.validarUsuario(usuarioDTO.getUsuario(), usuarioDTO.getContrasena())) {
 			UsuarioDTO usuario=new UsuarioDTO(usuarioService.findByUsuario(usuarioDTO.getUsuario()).get().getId(),
+					usuarioService.findByUsuario(usuarioDTO.getUsuario()).get().getRol().getId(),
 					usuarioService.findByUsuario(usuarioDTO.getUsuario()).get().getRol().getNombreRol(),
-					usuarioService.findByUsuario(usuarioDTO.getUsuario()).get().getUsuario());
+					usuarioService.findByUsuario(usuarioDTO.getUsuario()).get().getUsuario(),
+					usuarioService.findByUsuario(usuarioDTO.getUsuario()).get().getContrasena());
 			Map<String, Object> respuesta = new HashMap<>();
 	        respuesta.put("status", 200);
 	        respuesta.put("data", usuario);

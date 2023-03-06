@@ -1,10 +1,10 @@
 package com.proyecto.app.spring.DTO;
 
 
-
 public class UsuarioDTO {
 	private Long id;
-	private String rol;
+	private Long idRol;
+	private String nombreRol;
 	private String usuario;
 	private String contrasena;
 
@@ -15,10 +15,10 @@ public class UsuarioDTO {
 	
 	
 	
-	public UsuarioDTO(Long id, String rol, String usuario) {
+	public UsuarioDTO(Long id, Long idRol, String usuario) {
 		super();
 		this.id = id;
-		this.rol = rol;
+		this.idRol = idRol;
 		this.usuario = usuario;
 	}
 
@@ -34,24 +34,47 @@ public class UsuarioDTO {
 
 
 
-	public UsuarioDTO(Long id, String rol, String usuario, String contrasena) {
+	public UsuarioDTO(Long id, Long idRol,String nombreRol, String usuario, String contrasena) {
 		super();
 		this.id = id;
-		this.rol = rol;
+		this.idRol = idRol;
+		this.nombreRol = nombreRol;
 		this.usuario = usuario;
 		this.contrasena = contrasena;
 	}
 
 
+	
 
+	
 
-	public String getRol() {
-		return rol;
+	public Long getIdRol() {
+		return idRol;
 	}
 
-	public void setRol(String rol) {
-		this.rol = rol;
+
+
+
+	public void setIdRol(Long idRol) {
+		this.idRol = idRol;
 	}
+
+
+
+
+	public String getNombreRol() {
+		return nombreRol;
+	}
+
+
+
+
+	public void setNombreRol(String nombreRol) {
+		this.nombreRol = nombreRol;
+	}
+
+
+
 
 	public Long getId() {
 		return id;
