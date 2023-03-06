@@ -8,7 +8,7 @@ import java.util.*;
 import com.proyecto.app.spring.DTO.UsuarioDTO;
 import com.proyecto.app.spring.entity.*;
 import com.proyecto.app.spring.service.UsuarioService;
-
+@CrossOrigin(origins = "*") 
 @RestController
 @RequestMapping("/api/usuario")
 public class UsuarioController {
