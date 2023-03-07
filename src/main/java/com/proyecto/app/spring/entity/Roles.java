@@ -9,8 +9,7 @@ import jakarta.persistence.*;
 @Table(name="roles")
 public class Roles {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_Rol")
+	@Column(name="ID_Rol",nullable=false)
 	private Long id;
 	
 	@Column(name="Nombre_Rol",nullable=false,length=10)
@@ -21,6 +20,18 @@ public class Roles {
 
 	public Roles() {
 		super();
+	}
+	
+	public Roles(Long id) {
+		super();
+		this.id = id;
+	}
+	
+
+	public Roles(Long id, String nombreRol) {
+		super();
+		this.id = id;
+		this.nombreRol = nombreRol;
 	}
 
 	public Roles(Long id, String nombreRol, Set<Usuario> usuarios) {

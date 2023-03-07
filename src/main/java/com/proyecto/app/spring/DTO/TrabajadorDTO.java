@@ -1,62 +1,41 @@
-package com.proyecto.app.spring.entity;
+package com.proyecto.app.spring.DTO;
 
 import java.sql.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import jakarta.persistence.*;
+public class TrabajadorDTO {
 
-@Entity
-@Table(name="trabajador")
-public class Trabajador {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ID_Trabajador")
 	private Long id;
-	
-	@OneToOne
-    @JoinColumn(name = "ID_Usuario",nullable=false)
-    private Usuario usuario;
-	
-	@Column(name="Nombre_Trabajador",nullable=false,length=20)
-	private String nombre;
-	
-	@Column(name="Apellidos_Trabajador",nullable=false,length=60)
-	private String apellido;
-	
-	@Column(name="Edad_Trabajador",nullable=false, columnDefinition = "SMALLINT(2)")
-	private short edad;
-	
-	@Column(name="DNI_Trabajador",nullable=false,length=8,unique=true)
-	private int dni;
-	
-	@Column(name="Telefono_Trabajador",nullable=false,length=20)
-	private String telefono;
-	
-	@Column(name="Correo_Trabajador",nullable=false,length=50)
-	private String correo;
-	
-	@Column(name="Fecha_Alta",nullable=false)
-	private Date fechaAlta;
-	
-	@Column(name="Fecha_Baja")
-	private Date fechaBaja;
-	
-	@Column(name="Direccion",nullable=false,length=200)
-	private String direccion;
-	
-	@OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL)
-	private Set<Producto> productos = new HashSet<>();
 
-	public Trabajador() {
+	private String nombre;
+
+	private String apellido;
+
+	private short edad;
+
+	private int dni;
+
+	private String telefono;
+
+	private String correo;
+
+	private Date fechaAlta;
+
+	private Date fechaBaja;
+
+	private String direccion;
+
+	private String nombreUsuario;
+
+	private Long idUsuario;
+
+	public TrabajadorDTO() {
 		super();
 	}
 
-	public Trabajador(Long id, Usuario usuario, String nombre, String apellido, short edad, int dni, String telefono,
-			String correo, Date fechaAlta, Date fechaBaja, String direccion, Set<Producto> productos) {
+	public TrabajadorDTO(Long id, String nombre, String apellido, short edad, int dni, String telefono, String correo,
+			Date fechaAlta, Date fechaBaja, String direccion, String nombreUsuario, Long idUsuario) {
 		super();
 		this.id = id;
-		this.usuario = usuario;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.edad = edad;
@@ -66,7 +45,8 @@ public class Trabajador {
 		this.fechaAlta = fechaAlta;
 		this.fechaBaja = fechaBaja;
 		this.direccion = direccion;
-		this.productos = productos;
+		this.nombreUsuario = nombreUsuario;
+		this.idUsuario = idUsuario;
 	}
 
 	public Long getId() {
@@ -75,14 +55,6 @@ public class Trabajador {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
 	}
 
 	public String getNombre() {
@@ -157,14 +129,20 @@ public class Trabajador {
 		this.direccion = direccion;
 	}
 
-	public Set<Producto> getProductos() {
-		return productos;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
 
-	public void setProductos(Set<Producto> productos) {
-		this.productos = productos;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
 	}
-	
-	
-	
+
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 }

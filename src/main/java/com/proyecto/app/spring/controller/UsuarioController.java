@@ -79,6 +79,19 @@ public class UsuarioController {
         respuesta.put("status", 200);
         return ResponseEntity.ok(respuesta);
 	}
+	@PutMapping("/rol/{id}")
+	public ResponseEntity<?> updateById(@PathVariable Long id,@RequestBody Roles rol){
+		Optional<Usuario> usuarioOptional=usuarioService.findById(id);
+		if(!usuarioOptional.isPresent()) {
+			return ResponseEntity.notFound().build();
+		}
+		usuarioOptional.get().setRol(rol);
+		usuarioService.save(usuarioOptional.get());
+		Map<String, Object> respuesta = new HashMap<>();
+        respuesta.put("status", 200);
+        return ResponseEntity.ok(respuesta);
+		
+	}
 	
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
