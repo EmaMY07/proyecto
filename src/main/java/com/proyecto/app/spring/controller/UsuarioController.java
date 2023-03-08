@@ -14,7 +14,22 @@ import com.proyecto.app.spring.service.UsuarioService;
 public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
-	
+
+	@GetMapping("/trabajadores")
+	public ResponseEntity<?> readUsuarioTrabajador(){
+			List<Usuario> usuarios=usuarioService.obtenerUsuariosTrabajadoresNoRegistrados();
+			List<UsuarioDTO>usuariosDTO=new ArrayList<>();
+			for(Usuario usuario:usuarios) {
+				UsuarioDTO usuarioDTO=new UsuarioDTO(usuario.getId(),usuario.getRol().getId(),
+						usuario.getRol().getNombreRol(),usuario.getUsuario(),usuario.getContrasena());
+				usuariosDTO.add(usuarioDTO);
+			}
+			Map<String, Object> respuesta = new HashMap<>();
+			respuesta.put("status", 200);
+			respuesta.put("data", usuariosDTO);
+			return ResponseEntity.ok(respuesta);
+
+	}
 	@GetMapping
 	public ResponseEntity<?> readAll(){
 		List<Usuario> usuarios=usuarioService.findAll();

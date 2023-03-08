@@ -16,8 +16,14 @@ public class UsuarioServiceImpl implements UsuarioService {
 	private UsuarioDAO usuarioDAO;
 	
 	private BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-	
-	@Override
+
+    @Override
+    public List<Usuario> obtenerUsuariosTrabajadoresNoRegistrados() {
+
+		return usuarioDAO.obtenerUsuariosTrabajadoresNoRegistrados();
+    }
+
+    @Override
 	@Transactional(readOnly=true)
 	public List<Usuario> findAll() {
 		return usuarioDAO.findAll();
