@@ -38,8 +38,6 @@ public class Producto {
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "ID_Trabajador")
 	@JsonProperty(access = Access.WRITE_ONLY)
-	
-	
 	private Trabajador trabajador;
 	
 	public Producto() {

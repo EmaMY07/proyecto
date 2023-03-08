@@ -42,7 +42,7 @@ public class Trabajador {
 	@Column(name="Fecha_Baja")
 	private Date fechaBaja;
 	
-	@Column(name="Direccion",nullable=false,length=200)
+	@Column(name="Direccion",length=200)
 	private String direccion;
 	
 	@OneToMany(mappedBy = "trabajador", cascade = CascadeType.ALL)
