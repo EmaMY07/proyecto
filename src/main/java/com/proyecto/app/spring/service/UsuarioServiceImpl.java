@@ -38,8 +38,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Override
 	@Transactional
 	public void save(Usuario usuario) {
-		String contrasena=passwordEncoder.encode(usuario.getContrasena());
-		usuario.setContrasena(contrasena);
 		usuarioDAO.save(usuario);
 	}
 
@@ -59,7 +57,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	@Transactional(readOnly=true)
 	public boolean validarUsuario(String usuario, String contrasena) {
 		if(usuarioDAO.findByUsuario(usuario).isPresent()) {
-			if(passwordEncoder.matches(contrasena,usuarioDAO.findByUsuario(usuario).get().getContrasena())) {
+			if(usuarioDAO.findByUsuario(usuario).get().getContrasena().equals(contrasena)) {
 				return true;
 			}
 			return false;	
