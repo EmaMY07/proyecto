@@ -28,7 +28,7 @@ public class Comprobantes {
 	private Date fechaCompro;
 	
 	@Column(name="Total_Comprobante", nullable = false, columnDefinition = "DECIMAL(4,2)")
-	private BigDecimal TotalCompro;
+	private BigDecimal totalCompro;
 
 	
 	public Comprobantes() {
@@ -41,7 +41,7 @@ public class Comprobantes {
 		this.id = id;
 		this.producto = producto;
 		this.fechaCompro = fechaCompro;
-		TotalCompro = totalCompro;
+		this.totalCompro = totalCompro;
 	}
 
 
@@ -76,12 +76,12 @@ public class Comprobantes {
 
 
 	public BigDecimal getTotalCompro() {
-		return TotalCompro;
+		return this.totalCompro;
 	}
 
 
 	public void setTotalCompro(BigDecimal totalCompro) {
-		TotalCompro = totalCompro;
+		this.totalCompro = totalCompro;
 	}
 	
 	
