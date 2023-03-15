@@ -21,7 +21,7 @@ public class ComprobantesController {
         List<ComprobantesDTO> comprobantesDTO=new ArrayList<>();
         for (Comprobantes comprobante:comprobantes){
             ComprobantesDTO comprobanteDTO=new ComprobantesDTO(comprobante.getId(),comprobante.getProducto().getNombre()
-            ,comprobante.getFechaCompro(),comprobante.getTotalCompro());
+            ,comprobante.getProducto().getId(),comprobante.getFechaCompro(),comprobante.getTotalCompro());
             comprobantesDTO.add(comprobanteDTO);
         }
         Map<String,Object> respuesta=new HashMap<>();
@@ -38,7 +38,8 @@ public class ComprobantesController {
             return ResponseEntity.notFound().build();
         }
         ComprobantesDTO comprobanteDTO=new ComprobantesDTO(comprobanteOptional.get().getId(),comprobanteOptional.get().getProducto()
-                .getNombre(),comprobanteOptional.get().getFechaCompro(), comprobanteOptional.get().getTotalCompro());
+                .getNombre(),comprobanteOptional.get().getProducto().getId(),comprobanteOptional.get().getFechaCompro(),
+                comprobanteOptional.get().getTotalCompro());
 
         Map<String,Object> respuesta=new HashMap<>();
         respuesta.put("status",200);

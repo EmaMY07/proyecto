@@ -1,6 +1,5 @@
 package com.proyecto.app.spring.DTO;
 
-import com.proyecto.app.spring.entity.Producto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -8,15 +7,17 @@ import java.sql.Date;
 public class ComprobantesDTO {
     private Long id;
     private String producto;
+    private Long idProducto;
     private Date fechaCompro;
     private BigDecimal totalCompro;
 
     public ComprobantesDTO() {
     }
 
-    public ComprobantesDTO(Long id, String producto ,Date fechaCompro,BigDecimal totalCompro){
+    public ComprobantesDTO(Long id, String producto ,Long idProducto,Date fechaCompro,BigDecimal totalCompro){
         this.id=id;
         this.producto=producto;
+        this.idProducto=idProducto;
         this.fechaCompro=fechaCompro;
         this.totalCompro=totalCompro;
     }
@@ -35,6 +36,14 @@ public class ComprobantesDTO {
 
     public void setProducto(String producto) {
         this.producto = producto;
+    }
+
+    public Long getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(Long idProducto) {
+        this.idProducto = idProducto;
     }
 
     public Date getFechaCompro() {
