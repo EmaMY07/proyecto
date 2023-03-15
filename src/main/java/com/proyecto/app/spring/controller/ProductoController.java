@@ -25,6 +25,7 @@ public class ProductoController {
 					,producto.getTrabajador().getNombre());
 			productosDTO.add(productoDTO);
 		}
+		Collections.sort(productosDTO, Comparator.comparing(ProductoDTO::getNombre));
 		Map<String, Object> respuesta = new HashMap<>();
         respuesta.put("status", 200);
         respuesta.put("data", productosDTO);
